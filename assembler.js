@@ -334,7 +334,9 @@ Assembler.prototype.tokenDBDW = function(s, addr, length, linenumber) {
     return length;
 };
 
-Assembler.prototype.tokenString = function(s, addr, linenumber) {
+Assembler.prototype.tokenString = function(s, addr, length, linenumber) {
+    // align DW string
+    if (length == 2 && s.length % length == 1) s = s + '\0';
     for (var i = 0; i < s.length; i+=1) {
         this.setmem8(addr+i, s.charCodeAt(i));
     }
@@ -385,7 +387,7 @@ Assembler.prototype.parseDeclDB = function(args, addr, linenumber, dw) {
                 if (char === cork) {
                     cork = '\0';
                     mode = 0;
-                    let len = this.tokenString(text.substring(arg_start, i), addr+nbytes, linenumber);
+                    let len = this.tokenString(text.substring(arg_start, i), addr+nbytes, dw, linenumber);
                     if (len < 0) {
                         return -1;
                     }
