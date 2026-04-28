@@ -31,7 +31,6 @@ oop.inherits(TokenTooltip, Tooltip);
         var r = this.editor.renderer;
         if (this.lastT - (r.timeStamp || 0) > 1000) {
             r.rect = null;
-            r.showLineNumbers = true;
             r.timeStamp = this.lastT;
             this.maxHeight = window.innerHeight;
             this.maxWidth = window.innerWidth;
