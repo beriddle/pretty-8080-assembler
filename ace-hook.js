@@ -285,6 +285,7 @@ function AceHook() {
         mode: "ace/mode/assembly_8080",
         tabSize: 8,
         useSoftTabs: true,
+        showLineNumbers: true,
         wrap: true,
     });
     editor.session.gutter_contents = [];
