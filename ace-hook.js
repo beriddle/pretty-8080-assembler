@@ -31,6 +31,7 @@ oop.inherits(TokenTooltip, Tooltip);
         var r = this.editor.renderer;
         if (this.lastT - (r.timeStamp || 0) > 1000) {
             r.rect = null;
+            r.showLineNumbers = true;
             r.timeStamp = this.lastT;
             this.maxHeight = window.innerHeight;
             this.maxWidth = window.innerWidth;
@@ -285,7 +286,6 @@ function AceHook() {
         mode: "ace/mode/assembly_8080",
         tabSize: 8,
         useSoftTabs: true,
-        showLineNumbers: true,
         wrap: true,
     });
     editor.session.gutter_contents = [];
